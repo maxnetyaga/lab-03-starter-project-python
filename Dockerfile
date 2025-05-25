@@ -8,13 +8,14 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
-COPY pyproject.toml uv.lock ./
-RUN uv sync
 
 # Copy the rest of the app
 COPY Makefile .
 COPY spaceship spaceship
 COPY build build
+
+COPY pyproject.toml uv.lock ./
+RUN uv sync
 
 # Expose port used by FastAPI
 EXPOSE 8000

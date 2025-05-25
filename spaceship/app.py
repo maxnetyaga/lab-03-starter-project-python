@@ -5,7 +5,7 @@ from starlette.responses import FileResponse
 from spaceship.config import Settings
 from spaceship.routers import api, health
 
-# Hello wor
+# Hello world
 def make_app(settings: Settings) -> FastAPI:
     app = FastAPI(
         debug=settings.debug,
