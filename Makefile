@@ -11,7 +11,7 @@ docker-rerun:
 	(docker container rm --force spaceship-app || true) && docker run -p "7123:8000" -d --name spaceship-app spaceship-app
 
 docker-time:
-	DOCKER_BUILDKIT=1 docker build --no-cache --progress=plain -t spaceship-app .
+	DOCKER_BUILDKIT=1 docker build --progress plain --no-cache -t spaceship-app .
 
 build:
 	docker build -t spaceship-app .

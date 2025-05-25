@@ -1,17 +1,14 @@
-FROM debian:bookworm AS base
+FROM python:3.13-slim-bookworm AS base
 COPY --from=ghcr.io/astral-sh/uv:0.6.17 /uv /uvx /bin/
 
 # System dependencies for builds
-RUN apt update && apt install -y \
+RUN apt-get update && apt-get install -y \
     curl make
 
 # Set working directory
 WORKDIR /app
 
-# Copy project metadata first to leverage Docker layer caching
-COPY pyproject.toml uv.lock .python-version ./
-
-# Install dependencies using uv
+COPY pyproject.toml uv.lock ./
 RUN uv sync
 
 # Copy the rest of the app
