@@ -14,4 +14,4 @@ docker-time:
 	DOCKER_BUILDKIT=1 docker build --progress plain --no-cache -t spaceship-app .
 
 build:
-	docker build -t spaceship-app .
+	docker build --progress plain -t spaceship-app .
